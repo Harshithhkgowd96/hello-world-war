@@ -23,13 +23,13 @@ pipeline {
     post {
         success {
             emailext subject: "Build Success: ${env.JOB_NAME}", \
-                     body: "The build was successful"
-                     to: "harshithkngowda96@gmail.com"
+                     body: 'The build was successful'
+                     to: 'harshithkngowda96@gmail.com'
         }
         failure {
             emailext subject: "Build Failed: ${env.JOB_NAME}", \
-                     body: "The build has failed"
-                     to: "harshithkngowda96@gmail.com"
+                     body: 'The build has failed'
+                     to: 'harshithkngowda96@gmail.com'
         }
     }
 }
