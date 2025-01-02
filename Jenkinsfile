@@ -21,18 +21,16 @@ pipeline {
     }
    post {
         success {
-            emailext(
-                subject: "Build success",
-                body: "Build is successful",
-                to: 'harshithkngowda96@gmail.com'
-            )
+            emailext subject: "Build Success: ${env.JOB_NAME}", \
+                     body: "The build was successful. Please find the details below:\n\nJob: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}", \
+                     recipientProviders: [[$class: 'DevelopersRecipientProvider']], \
+                     to: 'harshithkngowda96@gmail.com'
         }
-    failure {
-            emailext(
-                subject: "Build failed",
-                body: "Build was failed ",
-                to: 'harshithkngowda96@gmail.com'
-                )
+        failure {
+            emailext subject: "Build Failed: ${env.JOB_NAME}", \
+                     body: "The build has failed. Please check the logs for details:\n\nJob: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}", \
+                     recipientProviders: [[$class: 'DevelopersRecipientProvider']], \
+                     to: 'harshithkngowda96@gmail.com'
         }
     }
 }
