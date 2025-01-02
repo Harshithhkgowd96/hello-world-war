@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'sudo cp /gitpractice/hello-world-war/target/hello-world-war-1.0.0.war \
+                sh 'scp /gitpractice/hello-world-war/target/hello-world-war-1.0.0.war \
                        /opt/apache-tomcat-10.1.34/webapps'
             }
         }
