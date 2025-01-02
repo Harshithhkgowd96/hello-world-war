@@ -1,8 +1,5 @@
 pipeline {
     agent { label 'Slave2' }
-    parameters {
-        string(name: 'cmd', defaultValue: 'package', description: 'Maven command to run')
-    }
                  stages {
         stage('Checkout') {
             steps {
@@ -14,7 +11,7 @@ pipeline {
             steps {
                 sh '''
                     cd hello-world-war
-                    mvn clean ${cmd}
+                    mvn clean package
                 '''
             }
         }
